@@ -27,7 +27,32 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
       </div>
 
       <div className="relative z-10 px-4 md:px-8 max-w-2xl">
-        {/* Hero content can be added here if needed */}
+        <div className="space-y-4">
+          <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight">
+            <span className="block">Powered by prompts.</span>
+            <span className="block">Fueled by hackathons.</span>
+            <span className="block" style={{ color: '#ddb870' }}>Curated for you.</span>
+          </h1>
+          
+          <div className="space-y-2 text-white/80 text-lg md:text-xl">
+            <p className="font-medium">Because AI news should move as fast as your code.</p>
+            <p className="text-base md:text-lg">Where hackathons meet the AI frontier.</p>
+          </div>
+          
+          <div className="pt-6">
+            <button 
+              className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-all duration-200 hover:scale-105 shadow-lg"
+              onClick={() => {
+                const firstContentRow = document.querySelector('[data-section]');
+                if (firstContentRow) {
+                  firstContentRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
+              Explore Content
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
