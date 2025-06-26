@@ -15,7 +15,7 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
       <div className="absolute inset-0">
         <div style={{padding:'56.25% 0 0 0', position:'relative', height: '100%'}}>
           <iframe 
-            src="https://player.vimeo.com/video/76979871?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1" 
+            src="https://player.vimeo.com/video/1096572882?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1" 
             frameBorder="0" 
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
             style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}} 
