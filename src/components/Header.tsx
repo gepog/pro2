@@ -93,25 +93,23 @@ export const Header: React.FC<HeaderProps> = ({
   const navItems = ['Home', 'Popular', 'My List'];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[60px] ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'backdrop-blur-md' : 'bg-gradient-to-b to-transparent'
     }`} style={{ backgroundColor: isScrolled ? 'rgba(8, 25, 50, 0.9)' : 'rgba(8, 25, 50, 0.8)' }}>
-      <div className="flex items-center justify-between px-4 md:px-8 h-full">
+      <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
-          <button
-            onClick={handleLogoClick}
-            className="relative transition-opacity hover:opacity-80 flex items-center justify-center h-full py-2"
-          >
-            <img 
-              src="/src/assets/image.png" 
-              alt="SKÀ Logo" 
-              className="h-8 w-auto transform scale-[1.4] origin-center"
-              style={{ 
-                objectFit: 'contain',
-                maxHeight: '32px'
-              }}
-            />
-          </button>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={handleLogoClick}
+              className="transition-opacity hover:opacity-80"
+            >
+              <img 
+                src="/src/assets/image.png" 
+                alt="SKÀ Logo" 
+                className="h-12 w-auto"
+              />
+            </button>
+          </div>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <button
@@ -125,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({
                         ? handleHomeClick
                         : undefined
                 }
-                className="text-white hover:text-gray-300 transition-colors text-sm"
+                className="text-white hover:text-gray-300 transition-colors text-base font-medium px-2 py-1"
               >
                 {item}
               </button>
