@@ -98,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
     }`} style={{ backgroundColor: isScrolled ? 'rgba(8, 25, 50, 0.9)' : 'rgba(8, 25, 50, 0.8)' }}>
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             <button
               onClick={handleLogoClick}
               className="transition-opacity hover:opacity-80"
