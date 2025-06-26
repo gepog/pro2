@@ -104,11 +104,14 @@ export const Header: React.FC<HeaderProps> = ({
               className="transition-opacity hover:opacity-80"
             >
               <img 
-                src="/src/assets/image.png" 
+                src="/src/assets/Title.png" 
                 alt="SKÀ Logo" 
-                className="h-12 w-auto"
+                className="h-10 w-auto"
               />
             </button>
+            <h1 className="text-2xl font-bold" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
+              Skà
+            </h1>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
