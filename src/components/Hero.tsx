@@ -20,10 +20,17 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8, 25, 50, 0.6), transparent, transparent)' }} />
       </div>
 
-      <div className="relative z-10 px-4 md:px-8 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
-          Skà
-        </h1>
+      <div className="relative z-10 px-4 md:px-8 flex items-center justify-center h-full">
+        <div className="flex items-center space-x-8">
+          <img 
+            src="/src/assets/Title.png" 
+            alt="SKÀ Logo" 
+            className="h-20 md:h-32 w-auto"
+          />
+          <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
+            Skà
+          </h1>
+        </div>
       </div>
     </div>
   );
