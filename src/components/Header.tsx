@@ -126,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({
                         ? handleHomeClick
                         : undefined
                 }
-                className="text-white hover:text-gray-300 transition-colors text-sm"
+                className="text-white hover:text-gray-300 transition-colors text-lg font-medium px-3 py-2"
               >
                 {item}
               </button>
