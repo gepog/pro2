@@ -43,9 +43,27 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
             <button 
               className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-all duration-200 hover:scale-105 shadow-lg"
               onClick={() => {
-                const firstContentRow = document.querySelector('[data-section]');
-                if (firstContentRow) {
-                  firstContentRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const mostPopularElement = document.querySelector('[data-section="most-popular"]');
+                if (mostPopularElement) {
+                  // Get the title element within the section
+                  const titleElement = mostPopularElement.querySelector('h2');
+                  if (titleElement) {
+                    // Calculate offset to account for fixed header
+                    const headerHeight = 80; // Approximate header height
+                    const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementTop - headerHeight;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  } else {
+                    // Fallback to section scroll if title not found
+                    mostPopularElement.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
                 }
               }}
             >
