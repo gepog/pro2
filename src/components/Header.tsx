@@ -99,9 +99,6 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
-              Skà
-            </h1>
             <button
               onClick={handleLogoClick}
               className="transition-opacity hover:opacity-80"
@@ -112,6 +109,9 @@ export const Header: React.FC<HeaderProps> = ({
                 className="h-10 w-auto"
               />
             </button>
+            <h1 className="text-2xl font-bold" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
+              Skà
+            </h1>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
