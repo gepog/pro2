@@ -146,7 +146,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                       : 'text-white'
                   }`}
                   style={{ color: isLiked ? '#22c55e' : 'white' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ddb870'}
                   onMouseLeave={(e) => e.currentTarget.style.color = isLiked ? '#22c55e' : 'white'}
                 >
                   <ThumbsUp size={20} />
