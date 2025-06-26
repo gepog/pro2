@@ -145,9 +145,9 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                       ? '' 
                       : 'text-white'
                   }`}
-                  style={{ color: isLiked ? '#22c55e' : 'white' }}
+                  style={{ color: isLiked ? '#ef4444' : 'white' }}
                   onMouseEnter={(e) => e.currentTarget.style.color = '#ddb870'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = isLiked ? '#22c55e' : 'white'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = isLiked ? '#ef4444' : 'white'}
                 >
                   <ThumbsUp size={20} />
                   <span className="text-sm">{isLiked ? 'Unlike' : 'Like'}</span>
