@@ -203,7 +203,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="text-white hover:text-gray-300 transition-colors p-2 relative"
           >
             <Bell size={20} />
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-600 rounded-full"></div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full" style={{ backgroundColor: '#ddb870' }}></div>
           </button>
 
           <button
