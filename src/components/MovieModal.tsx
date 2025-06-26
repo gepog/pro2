@@ -95,20 +95,20 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                 style={{ 
                   backgroundColor: isInMyList 
                     ? 'rgba(239, 68, 68, 0.8)' 
-                    : 'rgba(34, 197, 94, 0.8)'
+                    : 'rgba(221, 184, 112, 0.8)'
                 }}
                 onMouseEnter={(e) => {
                   if (isInMyList) {
                     e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
                   } else {
-                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 1)';
+                    e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 1)';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (isInMyList) {
                     e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.8)';
                   } else {
-                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
+                    e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.8)';
                   }
                 }}
               >
