@@ -34,7 +34,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({
       onClick={onClose}
     >
       <div 
-        className="rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto mt-20"
         style={{ backgroundColor: '#0f2f5f' }}
         onClick={(e) => e.stopPropagation()}
       >
