@@ -98,16 +98,21 @@ export const Header: React.FC<HeaderProps> = ({
     }`} style={{ backgroundColor: isScrolled ? 'rgba(8, 25, 50, 0.9)' : 'rgba(8, 25, 50, 0.8)' }}>
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
-          <button
-            onClick={handleLogoClick}
-            className="transition-opacity hover:opacity-80"
-          >
-            <img 
-              src="/src/assets/Title.png" 
-              alt="SKÀ Logo" 
-              className="h-10 w-auto"
-            />
-          </button>
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold" style={{ fontFamily: 'Alegreya Sans, sans-serif', color: '#ddb870' }}>
+              Skà
+            </h1>
+            <button
+              onClick={handleLogoClick}
+              className="transition-opacity hover:opacity-80"
+            >
+              <img 
+                src="/src/assets/Title.png" 
+                alt="SKÀ Logo" 
+                className="h-10 w-auto"
+              />
+            </button>
+          </div>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <button
