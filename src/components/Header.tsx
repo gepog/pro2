@@ -98,10 +98,10 @@ export const Header: React.FC<HeaderProps> = ({
     }`} style={{ backgroundColor: isScrolled ? 'rgba(8, 25, 50, 0.9)' : 'rgba(8, 25, 50, 0.8)' }}>
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
-          <div className="flex items-center space-x-4">
+          <div className="relative">
             <button
               onClick={handleLogoClick}
-              className="transition-opacity hover:opacity-80"
+              className="transition-opacity hover:opacity-80 scale-125 origin-left"
             >
               <img 
                 src="/src/assets/image.png" 
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({
                         ? handleHomeClick
                         : undefined
                 }
-                className="text-white hover:text-gray-300 transition-colors text-base font-medium px-2 py-1"
+                className="text-white hover:text-gray-300 transition-colors text-sm"
               >
                 {item}
               </button>
