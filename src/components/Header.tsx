@@ -83,11 +83,75 @@ export const Header: React.FC<HeaderProps> = ({
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setSearchQuery('');
+    onSearch(''); // Clear search results
   };
 
   const handleLogoClick = () => {
     // Refresh the page when logo is clicked
     window.location.reload();
+  };
+
+  const handleNavItemClick = (item: string) => {
+    // Clear search first
+    setSearchQuery('');
+    onSearch('');
+    
+    // Then handle navigation
+    if (item === 'My List') {
+      setTimeout(() => {
+        const myListElement = document.getElementById('mylist-section');
+        if (myListElement) {
+          myListElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    } else if (item === 'Popular') {
+      setTimeout(() => {
+        const mostPopularElement = document.querySelector('[data-section="most-popular"]');
+        if (mostPopularElement) {
+          const titleElement = mostPopularElement.querySelector('h2');
+          if (titleElement) {
+            const headerHeight = 80;
+            const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementTop - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          } else {
+            mostPopularElement.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      }, 100);
+    } else if (item === 'Home') {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else if (item === 'Practical Information') {
+      setTimeout(() => {
+        const contentRows = document.querySelectorAll('[data-content-row]');
+        if (contentRows.length >= 2) {
+          const secondRow = contentRows[1];
+          const titleElement = secondRow.querySelector('h2');
+          if (titleElement) {
+            const headerHeight = 80;
+            const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementTop - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 100);
+    }
   };
 
   const navItems = ['Home', 'Popular', 'My List', 'Practical Information'];
@@ -115,34 +179,7 @@ export const Header: React.FC<HeaderProps> = ({
             {navItems.map((item, index) => (
               <button
                 key={item}
-                onClick={
-                  item === 'My List' 
-                    ? handleMyListClick 
-                    : item === 'Popular' 
-                      ? handlePopularClick 
-                      : item === 'Home'
-                        ? handleHomeClick
-                        : item === 'Practical Information'
-                          ? () => {
-                              // Scroll to the second carousel (first content row after My List)
-                              const contentRows = document.querySelectorAll('[data-content-row]');
-                              if (contentRows.length >= 2) {
-                                const secondRow = contentRows[1]; // Index 1 = second row
-                                const titleElement = secondRow.querySelector('h2');
-                                if (titleElement) {
-                                  const headerHeight = 80;
-                                  const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
-                                  const offsetPosition = elementTop - headerHeight;
-                                  
-                                  window.scrollTo({
-                                    top: offsetPosition,
-                                    behavior: 'smooth'
-                                  });
-                                }
-                              }
-                            }
-                        : undefined
-                }
+                onClick={() => handleNavItemClick(item)}
                 className="text-white hover:text-gray-300 transition-colors text-base font-medium px-2 py-1"
               >
                 {item}
