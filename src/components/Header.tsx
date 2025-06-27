@@ -111,6 +111,44 @@ export const Header: React.FC<HeaderProps> = ({
               />
             </button>
           </div>
+          <nav className="hidden md:flex items-center space-x-6">
+            {navItems.map((item, index) => (
+              <button
+                key={item}
+                onClick={
+                  item === 'My List' 
+                    ? handleMyListClick 
+                    : item === 'Popular' 
+                      ? handlePopularClick 
+                      : item === 'Home'
+                        ? handleHomeClick
+                        : item === 'Practical Information'
+                          ? () => {
+                              // Scroll to the second carousel (first content row after My List)
+                              const contentRows = document.querySelectorAll('[data-content-row]');
+                              if (contentRows.length >= 2) {
+                                const secondRow = contentRows[1]; // Index 1 = second row
+                                const titleElement = secondRow.querySelector('h2');
+                                if (titleElement) {
+                                  const headerHeight = 80;
+                                  const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+                                  const offsetPosition = elementTop - headerHeight;
+                                  
+                                  window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: 'smooth'
+                                  });
+                                }
+                              }
+                            }
+                        : undefined
+                }
+                className="text-white hover:text-gray-300 transition-colors text-base font-medium px-2 py-1"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
         </div>
 
         <div className="flex items-center space-x-4">
