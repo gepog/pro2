@@ -29,9 +29,7 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
       <div className="relative z-10 px-4 md:px-8 max-w-2xl">
         <div className="space-y-4">
           <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight">
-            <span className="block">Powered by prompts.</span>
-            <span className="block">Fueled by hackathons.</span>
-            <span className="block" style={{ color: '#ddb870' }}>Curated for you.</span>
+            <span className="block" style={{ color: '#ddb870' }}>AI Hackathon news</span>
           </h1>
         </div>
       </div>
