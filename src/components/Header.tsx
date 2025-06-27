@@ -106,8 +106,8 @@ export const Header: React.FC<HeaderProps> = ({
               <img 
                 src="/src/assets/image copy.png" 
                 alt="SKÀ Logo" 
-                className="h-10 w-auto transform scale-125 md:scale-130"
-                style={{ transform: 'scale(1.3)' }}
+                className="h-10 w-auto"
+                style={{ transform: 'scale(1.6)' }}
               />
             </button>
           </div>
