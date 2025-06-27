@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(8, 25, 50, 0.6), transparent, transparent)' }} />
       </div>
 
-      <div className="relative z-10 px-4 md:px-8 max-w-2xl -mt-32">
+      <div className="relative z-10 px-4 md:px-8 max-w-2xl">
         <div className="space-y-4">
           <h1 className="text-white text-3xl md:text-4xl font-bold leading-tight max-w-md">
             <span className="block" style={{ color: '#ddb870' }}>AI Hackathon news</span>
