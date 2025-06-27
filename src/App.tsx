@@ -170,7 +170,7 @@ function App() {
         moviesWithUpdatedLikes.find(m => m.id === movie.id) || movie
       )
     };
-  }).filter((row, index) => index !== 1); // Remove the second carousel (index 1)
+  });
 
   // Also include custom movies from content rows that are in myList
   const myListMovies = movies.filter(movie => myList.includes(movie.id));
@@ -195,19 +195,32 @@ function App() {
   
   const allMyListMovies = [...myListMovies, ...customMoviesInMyList];
   
-  const finalContentRows = allMyListMovies.length > 0 
-    ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
-    : updatedContentRows;
-
-  // Add a new carousel at the end
-  const finalContentRowsWithNew = [
-    ...finalContentRows,
-    {
-      id: 'new-releases',
-      title: 'New Releases',
-      movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
-    }
-  ];
+  // Reorganize carousels in the correct order
+  const organizedContentRows = [];
+  
+  // 1. Most Popular (most-liked carousel)
+  const mostPopularRow = updatedContentRows.find(row => row.id === 'most-liked');
+  if (mostPopularRow) {
+    organizedContentRows.push({ ...mostPopularRow, title: 'Most Popular' });
+  }
+  
+  // 2. Bolt.new (first remaining carousel that's not most-liked)
+  const boltNewRow = updatedContentRows.find(row => row.id !== 'most-liked');
+  if (boltNewRow) {
+    organizedContentRows.push({ ...boltNewRow, title: 'Bolt.new' });
+  }
+  
+  // 3. My List (if there are items)
+  if (allMyListMovies.length > 0) {
+    organizedContentRows.push({ id: 'mylist', title: 'My List', movies: allMyListMovies });
+  }
+  
+  // 4. New Releases (new carousel at the end)
+  organizedContentRows.push({
+    id: 'new-releases',
+    title: 'New Releases',
+    movies: moviesWithUpdatedLikes.slice(0, 8)
+  });
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#081932' }}>
@@ -270,12 +283,12 @@ function App() {
           />
 
           <div className="relative -mt-16 z-10">
-            {finalContentRowsWithNew.map((row) => (
+            {organizedContentRows.map((row) => (
               <div
                 key={row.id}
                data-content-row
                 id={row.id === 'mylist' ? 'mylist-section' : undefined}
-                data-section={row.id === 'most-liked' ? 'most-popular' : undefined}
+                data-section={row.title === 'Most Popular' ? 'most-popular' : undefined}
                 className={row.id === 'mylist' ? 'pt-8' : ''}
               >
                 <ContentRow
