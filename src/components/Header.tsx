@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
     window.location.reload();
   };
 
-  const navItems = ['Home', 'Popular', 'My List'];
+  const navItems = ['Home', 'Popular', 'My List', 'Practical Information'];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -122,6 +122,11 @@ export const Header: React.FC<HeaderProps> = ({
                       ? handlePopularClick 
                       : item === 'Home'
                         ? handleHomeClick
+                        : item === 'Practical Information'
+                          ? () => {
+                              // Scroll to practical information section or open modal
+                              console.log('Practical Information clicked');
+                            }
                         : undefined
                 }
                 className="text-white hover:text-gray-300 transition-colors text-base font-medium px-2 py-1"
