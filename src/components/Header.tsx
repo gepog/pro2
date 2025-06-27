@@ -124,11 +124,11 @@ export const Header: React.FC<HeaderProps> = ({
                         ? handleHomeClick
                         : item === 'Practical Information'
                           ? () => {
-                              // Scroll to the third carousel (second content row after My List)
+                              // Scroll to the second carousel (first content row after My List)
                               const contentRows = document.querySelectorAll('[data-content-row]');
-                              if (contentRows.length >= 3) {
-                                const thirdRow = contentRows[2]; // Index 2 = third row
-                                const titleElement = thirdRow.querySelector('h2');
+                              if (contentRows.length >= 2) {
+                                const secondRow = contentRows[1]; // Index 1 = second row
+                                const titleElement = secondRow.querySelector('h2');
                                 if (titleElement) {
                                   const headerHeight = 80;
                                   const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
