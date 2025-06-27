@@ -199,29 +199,30 @@ function App() {
     ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
     : updatedContentRows;
 
-  // Filter to show only the specific carousels you want
-  const allowedCarouselIds = ['mylist', 'most-liked', 'expo', 'revenuecat', 'tavus'];
-  const filteredContentRows = finalContentRows.filter(row => 
-    allowedCarouselIds.includes(row.id)
-  );
-
-  // Reorder to match your preferred order: Most Popular, Expo, RevenueCat, Tavus
-  const orderedContentRows = [];
-  
-  // Add My List first if it exists
-  const myListRow = filteredContentRows.find(row => row.id === 'mylist');
-  if (myListRow) {
-    orderedContentRows.push(myListRow);
-  }
-  
-  // Add the other carousels in the specified order
-  const carouselOrder = ['most-liked', 'expo', 'revenuecat', 'tavus'];
-  carouselOrder.forEach(carouselId => {
-    const carousel = filteredContentRows.find(row => row.id === carouselId);
-    if (carousel) {
-      orderedContentRows.push(carousel);
-    }
+  // Remove the second carousel and insert New Releases between TAVUS and RevenueCat
+  const finalContentRowsWithNew = finalContentRows.filter((row, index) => {
+    // If My List exists, remove index 2 (second content carousel after My List)
+    // If My List doesn't exist, remove index 1 (second carousel)
+    const indexToRemove = allMyListMovies.length > 0 ? 2 : 1;
+    return index !== indexToRemove;
   });
+  
+  // Now insert New Releases between TAVUS and RevenueCat
+  const finalContentRowsWithNewReleases = [];
+  
+  for (let i = 0; i < finalContentRowsWithNew.length; i++) {
+    finalContentRowsWithNewReleases.push(finalContentRowsWithNew[i]);
+    
+    // Insert New Releases after the first content carousel (TAVUS)
+    const insertAfterIndex = allMyListMovies.length > 0 ? 1 : 0;
+    if (i === insertAfterIndex) {
+      finalContentRowsWithNewReleases.push({
+        id: 'new-releases',
+        title: 'New Releases',
+        movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
+      });
+    }
+  }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#081932' }}>
@@ -284,7 +285,7 @@ function App() {
           />
 
           <div className="relative -mt-16 z-10">
-            {orderedContentRows.map((row) => (
+            {finalContentRowsWithNewReleases.map((row) => (
               <div
                 key={row.id}
                data-content-row
