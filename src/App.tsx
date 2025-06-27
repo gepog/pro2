@@ -199,6 +199,16 @@ function App() {
     ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
     : updatedContentRows;
 
+  // Add a new carousel at the end
+  const finalContentRowsWithNew = [
+    ...finalContentRows,
+    {
+      id: 'new-releases',
+      title: 'New Releases',
+      movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
+    }
+  ];
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#081932' }}>
       <Header
@@ -260,7 +270,7 @@ function App() {
           />
 
           <div className="relative -mt-16 z-10">
-            {finalContentRows.map((row) => (
+            {finalContentRowsWithNew.map((row) => (
               <div
                 key={row.id}
                data-content-row
