@@ -133,28 +133,11 @@ export const Header: React.FC<HeaderProps> = ({
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 100);
-    } else if (item === 'Practical Information') {
-      setTimeout(() => {
-        const contentRows = document.querySelectorAll('[data-content-row]');
-        if (contentRows.length >= 2) {
-          const secondRow = contentRows[1];
-          const titleElement = secondRow.querySelector('h2');
-          if (titleElement) {
-            const headerHeight = 80;
-            const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementTop - headerHeight;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
-      }, 100);
     }
   };
 
   const navItems = ['Home', 'Popular', 'My List', 'Practical Information'];
+  const navItems = ['Home', 'Popular', 'My List'];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
