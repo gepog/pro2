@@ -33,43 +33,6 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
             <span className="block">Fueled by hackathons.</span>
             <span className="block" style={{ color: '#ddb870' }}>Curated for you.</span>
           </h1>
-          
-          <div className="space-y-2 text-white/80 text-lg md:text-xl">
-            <p className="font-medium">Because AI news should move as fast as your code.</p>
-            <p className="text-base md:text-lg">Where hackathons meet the AI frontier.</p>
-          </div>
-          
-          <div className="pt-6">
-            <button 
-              className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 transition-all duration-200 hover:scale-105 shadow-lg"
-              onClick={() => {
-                const mostPopularElement = document.querySelector('[data-section="most-popular"]');
-                if (mostPopularElement) {
-                  // Get the title element within the section
-                  const titleElement = mostPopularElement.querySelector('h2');
-                  if (titleElement) {
-                    // Calculate offset to account for fixed header
-                    const headerHeight = 80; // Approximate header height
-                    const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = elementTop - headerHeight;
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    });
-                  } else {
-                    // Fallback to section scroll if title not found
-                    mostPopularElement.scrollIntoView({ 
-                      behavior: 'smooth',
-                      block: 'start'
-                    });
-                  }
-                }
-              }}
-            >
-              Explore Content
-            </button>
-          </div>
         </div>
       </div>
     </div>
