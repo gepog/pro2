@@ -170,7 +170,7 @@ function App() {
         moviesWithUpdatedLikes.find(m => m.id === movie.id) || movie
       )
     };
-  }).slice(0, 1); // Only keep the first content row (most-liked)
+  });
 
   // Also include custom movies from content rows that are in myList
   const myListMovies = movies.filter(movie => myList.includes(movie.id));
