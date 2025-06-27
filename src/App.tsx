@@ -170,7 +170,7 @@ function App() {
         moviesWithUpdatedLikes.find(m => m.id === movie.id) || movie
       )
     };
-  });
+  }).filter((row, index) => index !== 1); // Remove the second carousel (index 1)
 
   // Also include custom movies from content rows that are in myList
   const myListMovies = movies.filter(movie => myList.includes(movie.id));
@@ -196,8 +196,8 @@ function App() {
   const allMyListMovies = [...myListMovies, ...customMoviesInMyList];
   
   const finalContentRows = allMyListMovies.length > 0 
-    ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows.filter((row, index) => index !== 0)]
-    : updatedContentRows.filter((row, index) => index !== 0);
+    ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
+    : updatedContentRows;
 
   // Add a new carousel at the end
   const finalContentRowsWithNew = [
