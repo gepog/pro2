@@ -170,7 +170,7 @@ function App() {
         moviesWithUpdatedLikes.find(m => m.id === movie.id) || movie
       )
     };
-  });
+  }).filter((row, index) => index !== 1); // Remove the second carousel (index 1)
 
   // Also include custom movies from content rows that are in myList
   const myListMovies = movies.filter(movie => myList.includes(movie.id));
@@ -199,24 +199,15 @@ function App() {
     ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
     : updatedContentRows;
 
-  // Remove the second carousel and insert New Releases between TAVUS and RevenueCat
-  const finalContentRowsWithNew = finalContentRows.filter((row, index) => {
-    // If My List exists, remove index 2 (second content carousel after My List)
-    // If My List doesn't exist, remove index 1 (second carousel)
-    const indexToRemove = allMyListMovies.length > 0 ? 2 : 1;
-    return index !== indexToRemove;
-  });
+  // Insert New Releases carousel between TAVUS and RevenueCat
+  const finalContentRowsWithNew = [];
   
-  // Now insert New Releases between TAVUS and RevenueCat
-  const finalContentRowsWithNewReleases = [];
-  
-  for (let i = 0; i < finalContentRowsWithNew.length; i++) {
-    finalContentRowsWithNewReleases.push(finalContentRowsWithNew[i]);
+  for (let i = 0; i < finalContentRows.length; i++) {
+    finalContentRowsWithNew.push(finalContentRows[i]);
     
-    // Insert New Releases after the first content carousel (TAVUS)
-    const insertAfterIndex = allMyListMovies.length > 0 ? 1 : 0;
-    if (i === insertAfterIndex) {
-      finalContentRowsWithNewReleases.push({
+    // Insert New Releases after TAVUS carousel (assuming it's the first carousel after My List)
+    if (i === 1) { // After the first content carousel (index 1, since My List is index 0 if it exists)
+      finalContentRowsWithNew.push({
         id: 'new-releases',
         title: 'New Releases',
         movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
@@ -285,7 +276,7 @@ function App() {
           />
 
           <div className="relative -mt-16 z-10">
-            {finalContentRowsWithNewReleases.map((row) => (
+            {finalContentRowsWithNew.map((row) => (
               <div
                 key={row.id}
                data-content-row
