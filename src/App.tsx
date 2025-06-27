@@ -199,15 +199,21 @@ function App() {
     ? [{ id: 'mylist', title: 'My List', movies: allMyListMovies }, ...updatedContentRows]
     : updatedContentRows;
 
-  // Add a new carousel at the end
-  const finalContentRowsWithNew = [
-    ...finalContentRows,
-    {
-      id: 'new-releases',
-      title: 'New Releases',
-      movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
+  // Insert New Releases carousel between TAVUS and RevenueCat
+  const finalContentRowsWithNew = [];
+  
+  for (let i = 0; i < finalContentRows.length; i++) {
+    finalContentRowsWithNew.push(finalContentRows[i]);
+    
+    // Insert New Releases after TAVUS carousel (assuming it's the first carousel after My List)
+    if (i === 1) { // After the first content carousel (index 1, since My List is index 0 if it exists)
+      finalContentRowsWithNew.push({
+        id: 'new-releases',
+        title: 'New Releases',
+        movies: moviesWithUpdatedLikes.slice(0, 8) // Show first 8 movies as new releases
+      });
     }
-  ];
+  }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#081932' }}>
