@@ -263,6 +263,7 @@ function App() {
             {finalContentRows.map((row) => (
               <div
                 key={row.id}
+               data-content-row
                 id={row.id === 'mylist' ? 'mylist-section' : undefined}
                 data-section={row.id === 'most-liked' ? 'most-popular' : undefined}
                 className={row.id === 'mylist' ? 'pt-8' : ''}

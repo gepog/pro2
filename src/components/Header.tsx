@@ -124,8 +124,22 @@ export const Header: React.FC<HeaderProps> = ({
                         ? handleHomeClick
                         : item === 'Practical Information'
                           ? () => {
-                              // Scroll to practical information section or open modal
-                              console.log('Practical Information clicked');
+                              // Scroll to the third carousel (second content row after My List)
+                              const contentRows = document.querySelectorAll('[data-content-row]');
+                              if (contentRows.length >= 3) {
+                                const thirdRow = contentRows[2]; // Index 2 = third row
+                                const titleElement = thirdRow.querySelector('h2');
+                                if (titleElement) {
+                                  const headerHeight = 80;
+                                  const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+                                  const offsetPosition = elementTop - headerHeight;
+                                  
+                                  window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: 'smooth'
+                                  });
+                                }
+                              }
                             }
                         : undefined
                 }
